@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #222629;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 100;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  header {
+    text-align: center;
+    color: #88C232;
+    text-align: center;
+    padding: 15px;
+    font-size: 24px;
+  }
+  
+  main {
+    max-width: 800px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  section {
+    background-color: #474B4F;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    color: #88C232;
+    margin-bottom: 10px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #abb1b5;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #88C232;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: small;
+  }
+  
+  
+  #incompleteBookList, #completeBookList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  [data-testid="bookItem"] {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+  
+  [data-testid="bookItemIsCompleteButton"] {
+    background-color: #88C232;
+  }
+  
+  [data-testid="bookItemDeleteButton"] {
+    background-color: rgba(221, 8, 8, 0.651);
+  }
+  
+  [data-testid="bookItemIsCompleteButton"], [data-testid="bookItemDeleteButton"] {
+    color: white;
+    padding: 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
