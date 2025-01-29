@@ -10,28 +10,28 @@
   <body>
     <div class="container">
       <header>
-        <h1>Bookshelf App</h1>
+        <h1>Watchlist App</h1>
       </header>
     </div>
 
     <main>
       <section>
-        <h2>Tambah Buku Baru</h2>
+        <h2>Tambah Film Baru</h2>
         <form id="bookForm" data-testid="bookForm">
           <div>
             <label for="bookFormTitle">Judul</label>
             <input id="bookFormTitle" type="text" required data-testid="bookFormTitleInput" />
           </div>
           <div>
-            <label for="bookFormAuthor">Penulis</label>
-            <input id="bookFormAuthor" type="text" required data-testid="bookFormAuthorInput" />
+            <label for="bookFormAuthor">Producer</label>
+            <input id="bookFormAuthor" type="text" data-testid="bookFormAuthorInput" />
           </div>
           <div>
             <label for="bookFormYear">Tahun</label>
-            <input id="bookFormYear" type="number" required data-testid="bookFormYearInput" />
+            <input id="bookFormYear" type="number" data-testid="bookFormYearInput" />
           </div>
           <div>
-            <label for="bookFormIsComplete">Selesai dibaca</label>
+            <label for="bookFormIsComplete">Selesai ditonton</label>
             <input
               id="bookFormIsComplete"
               type="checkbox"
@@ -39,13 +39,13 @@
             />
           </div>
           <button id="bookFormSubmit" type="submit" data-testid="bookFormSubmitButton">
-            Masukkan Buku ke rak
+            Submit
           </button>
         </form>
       </section>
 
       <section>
-        <h2>Cari Buku</h2>
+        <h2>Watchlist Anda</h2>
         <form id="searchBook" data-testid="searchBookForm">
           <label for="searchBookTitle">Judul</label>
           <input id="searchBookTitle" type="text" data-testid="searchBookFormTitleInput" />
@@ -56,7 +56,7 @@
       </section>
 
       <section>
-        <h2>Belum selesai dibaca</h2>
+        <h2>Belum selesai ditonton</h2>
 
         <div id="incompleteBookList" data-testid="incompleteBookList">
           <div data-bookid="123123123" data-testid="bookItem">
@@ -72,7 +72,7 @@
       </section>
 
       <section>
-        <h2>Selesai dibaca</h2>
+        <h2>Selesai ditonton</h2>
         <div id="completeBookList" data-testid="completeBookList">
           <div data-bookid="456456456" data-testid="bookItem">
             <h3 data-testid="bookItemTitle"></h3>
