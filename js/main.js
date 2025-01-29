@@ -104,7 +104,7 @@ function createBookCard({ id, title, author, year, isComplete }) {
     titleElement.setAttribute("data-testid", "bookItemTitle");
 
     const authorElement = document.createElement("p");
-    authorElement.textContent = `Penulis: ${author}`;
+    authorElement.textContent = `Producer: ${author}`;
     authorElement.setAttribute("data-testid", "bookItemAuthor");
 
     const yearElement = document.createElement("p");
@@ -114,12 +114,14 @@ function createBookCard({ id, title, author, year, isComplete }) {
     const buttonContainer = document.createElement("div");
 
     const toggleButton = document.createElement("button");
-    toggleButton.textContent = isComplete ? "Belum selesai dibaca" : "Selesai dibaca";
+    toggleButton.classList.add('toggleButton')
+    toggleButton.textContent = isComplete ? "Belum selesai ditonton" : "Selesai ditonton";
     toggleButton.setAttribute("data-testid", "bookItemIsCompleteButton");
     toggleButton.addEventListener("click", () => toggleBookCompletion(id));
 
     const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Hapus Buku";
+    deleteButton.classList.add('deleteButton')
+    deleteButton.textContent = "Hapus Film";
     deleteButton.setAttribute("data-testid", "bookItemDeleteButton");
     deleteButton.addEventListener("click", () => removeBook(id));
 
