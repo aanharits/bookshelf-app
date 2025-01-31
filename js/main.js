@@ -11,12 +11,12 @@ document.addEventListener("DOMContentLoaded", () => {
     loadBooksFromLocalStorage();
 });
 
-// Simpan data buku ke local storage
+// Simpan data film ke local storage
 function saveBooksToLocalStorage() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(bookCollection));
 }
 
-// Fungsi untuk menambah buku baru
+// Fungsi untuk menambah film baru
 function handleAddBook(event) {
     event.preventDefault();
 
@@ -38,7 +38,7 @@ function handleAddBook(event) {
     displayBooks();
 }
 
-// Memuat buku dari local storage
+// Memuat film dari local storage
 function loadBooksFromLocalStorage() {
     const storedData = localStorage.getItem(STORAGE_KEY);
     if (storedData) {
@@ -47,7 +47,7 @@ function loadBooksFromLocalStorage() {
     }
 }
 
-// Menampilkan buku di rak
+// Menampilkan film di rak 
 function displayBooks(filteredBooks = bookCollection) {
     const incompleteSection = document.getElementById("incompleteBookList");
     const completeSection = document.getElementById("completeBookList");
@@ -65,7 +65,7 @@ function displayBooks(filteredBooks = bookCollection) {
     });
 }
 
-// Mengubah status buku
+// Mengubah status film
 function toggleBookCompletion(bookId) {
     const targetBook = bookCollection.find((book) => book.id === bookId);
     if (targetBook) {
@@ -75,14 +75,14 @@ function toggleBookCompletion(bookId) {
     }
 }
 
-// Menghapus buku
+// Menghapus film
 function removeBook(bookId) {
     bookCollection = bookCollection.filter((book) => book.id !== bookId);
     saveBooksToLocalStorage();
     displayBooks();
 }
 
-// Mencari buku
+// Mencari film
 function handleSearchBook(event) {
     event.preventDefault();
     const searchQuery = document.getElementById("searchBookTitle").value.toLowerCase();
@@ -92,7 +92,7 @@ function handleSearchBook(event) {
     displayBooks(searchResults);
 }
 
-// Membuat elemen buku
+// Membuat elemen film
 function createBookCard({ id, title, author, year, isComplete }) {
     const bookCard = document.createElement("div");
     bookCard.classList.add("book-item");
