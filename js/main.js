@@ -102,36 +102,34 @@ function createFilmCard({ id, title, producer, year, isComplete }) {
     const titleElement = document.createElement("h3");
     titleElement.textContent = title;
     titleElement.setAttribute("data-testid", "filmItemTitle");
+    filmCard.appendChild(titleElement);
 
     const producerElement = document.createElement("p");
     producerElement.textContent = `Producer: ${producer}`;
     producerElement.setAttribute("data-testid", "filmItemProducer");
+    filmCard.appendChild(producerElement);
 
     const yearElement = document.createElement("p");
     yearElement.textContent = `Tahun: ${year}`;
     yearElement.setAttribute("data-testid", "filmItemYear");
+    filmCard.appendChild(yearElement);
 
     const buttonContainer = document.createElement("div");
+    filmCard.appendChild(buttonContainer);
 
     const toggleButton = document.createElement("button");
     toggleButton.classList.add('toggleButton')
     toggleButton.textContent = isComplete ? "Belum selesai ditonton" : "Selesai ditonton";
     toggleButton.setAttribute("data-testid", "filmItemIsCompleteButton");
     toggleButton.addEventListener("click", () => toggleFilmCompletion(id));
+    buttonContainer.appendChild(toggleButton);
 
     const deleteButton = document.createElement("button");
     deleteButton.classList.add('deleteButton')
     deleteButton.textContent = "Hapus Film";
     deleteButton.setAttribute("data-testid", "filmItemDeleteButton");
     deleteButton.addEventListener("click", () => removeFilm(id));
-
-    buttonContainer.appendChild(toggleButton);
     buttonContainer.appendChild(deleteButton);
-
-    filmCard.appendChild(titleElement);
-    filmCard.appendChild(producerElement);
-    filmCard.appendChild(yearElement);
-    filmCard.appendChild(buttonContainer);
 
     return filmCard;
 }
