@@ -27,7 +27,7 @@
     font-size: 15px;
   }
 
-  [data-testid="bookItem"] {
+  [data-testid="filmItem"] {
     font-size: 15px;
   }
 }
@@ -109,13 +109,13 @@
   }
   
   
-  #incompleteBookList, #completeBookList {
+  #incompleteFilmList, #completeFilmList {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
   
-  .book-item {
+  .film-item {
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 12px;
@@ -139,5 +139,3 @@
     border-radius: 8px;
     cursor: pointer;
   }
-
-  
