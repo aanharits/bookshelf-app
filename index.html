@@ -17,28 +17,24 @@
     <main>
       <section>
         <h2>Tambah Film Baru</h2>
-        <form id="bookForm" data-testid="bookForm">
+        <form id="filmForm" data-testid="filmForm">
           <div>
-            <label for="bookFormTitle">Judul</label>
-            <input id="bookFormTitle" type="text" required data-testid="bookFormTitleInput" />
+            <label for="filmFormTitle">Judul</label>
+            <input id="filmFormTitle" type="text" required data-testid="filmFormTitleInput" />
           </div>
           <div>
-            <label for="bookFormAuthor">Producer</label>
-            <input id="bookFormAuthor" type="text" data-testid="bookFormAuthorInput" />
+            <label for="filmFormProducer">Producer</label>
+            <input id="filmFormProducer" type="text" data-testid="filmFormProducerInput" />
           </div>
           <div>
-            <label for="bookFormYear">Tahun</label>
-            <input id="bookFormYear" type="number" data-testid="bookFormYearInput" />
+            <label for="filmFormYear">Tahun</label>
+            <input id="filmFormYear" type="number" data-testid="filmFormYearInput" />
           </div>
           <div>
-            <label for="bookFormIsComplete">Selesai ditonton</label>
-            <input
-              id="bookFormIsComplete"
-              type="checkbox"
-              data-testid="bookFormIsCompleteCheckbox"
-            />
+            <label for="filmFormIsComplete">Selesai ditonton</label>
+            <input id="filmFormIsComplete" type="checkbox" data-testid="filmFormIsCompleteCheckbox" />
           </div>
-          <button id="bookFormSubmit" type="submit" data-testid="bookFormSubmitButton">
+          <button id="filmFormSubmit" type="submit" data-testid="filmFormSubmitButton">
             Submit
           </button>
         </form>
@@ -46,10 +42,10 @@
 
       <section>
         <h2>Watchlist Anda</h2>
-        <form id="searchBook" data-testid="searchBookForm">
-          <label for="searchBookTitle">Judul</label>
-          <input id="searchBookTitle" type="text" data-testid="searchBookFormTitleInput" />
-          <button id="searchSubmit" type="submit" data-testid="searchBookFormSubmitButton">
+        <form id="searchFilm" data-testid="searchFilmForm">
+          <label for="searchFilmTitle">Judul</label>
+          <input id="searchFilmTitle" type="text" data-testid="searchFilmFormTitleInput" />
+          <button id="searchSubmit" type="submit" data-testid="searchFilmFormSubmitButton">
             Cari
           </button>
         </form>
@@ -57,15 +53,14 @@
 
       <section>
         <h2>Belum selesai ditonton</h2>
-
-        <div id="incompleteBookList" data-testid="incompleteBookList">
-          <div data-bookid="123123123" data-testid="bookItem">
-            <h4 data-testid="bookItemTitle"></h4>
-            <p data-testid="bookItemAuthor"></p>
-            <p data-testid="bookItemYear"></p>
+        <div id="incompleteFilmList" data-testid="incompleteFilmList">
+          <div data-filmid="123123123" data-testid="filmItem">
+            <h4 data-testid="filmItemTitle"></h4>
+            <p data-testid="filmItemProducer"></p>
+            <p data-testid="filmItemYear"></p>
             <div>
-              <button data-testid="bookItemIsCompleteButton"></button>
-              <button data-testid="bookItemDeleteButton"></button>
+              <button data-testid="filmItemIsCompleteButton"></button>
+              <button data-testid="filmItemDeleteButton"></button>
             </div>
           </div>
         </div>
@@ -73,14 +68,14 @@
 
       <section>
         <h2>Selesai ditonton</h2>
-        <div id="completeBookList" data-testid="completeBookList">
-          <div data-bookid="456456456" data-testid="bookItem">
-            <h3 data-testid="bookItemTitle"></h3>
-            <p data-testid="bookItemAuthor"></p>
-            <p data-testid="bookItemYear"></p>
+        <div id="completeFilmList" data-testid="completeFilmList">
+          <div data-filmid="456456456" data-testid="filmItem">
+            <h3 data-testid="filmItemTitle"></h3>
+            <p data-testid="filmItemProducer"></p>
+            <p data-testid="filmItemYear"></p>
             <div>
-              <button data-testid="bookItemIsCompleteButton"></button>
-              <button data-testid="bookItemDeleteButton"></button>
+              <button data-testid="filmItemIsCompleteButton"></button>
+              <button data-testid="filmItemDeleteButton"></button>
             </div>
           </div>
         </div>
