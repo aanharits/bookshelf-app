@@ -1,137 +1,137 @@
-const STORAGE_KEY = "BOOKSHELF_DATA";
-let bookCollection = [];
+const STORAGE_KEY = "FILMSHELF_DATA";
+let filmCollection = [];
 
 document.addEventListener("DOMContentLoaded", () => {
-    const formAddBook = document.getElementById("bookForm");
-    const formSearchBook = document.getElementById("searchBook");
+    const formAddFilm = document.getElementById("filmForm");
+    const formSearchFilm = document.getElementById("searchFilm");
 
-    formAddBook.addEventListener("submit", handleAddBook);
-    formSearchBook.addEventListener("submit", handleSearchBook);
+    formAddFilm.addEventListener("submit", handleAddFilm);
+    formSearchFilm.addEventListener("submit", handleSearchFilm);
 
-    loadBooksFromLocalStorage();
+    loadFilmsFromLocalStorage();
 });
 
 // Simpan data film ke local storage
-function saveBooksToLocalStorage() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(bookCollection));
+function saveFilmsToLocalStorage() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(filmCollection));
 }
 
 // Fungsi untuk menambah film baru
-function handleAddBook(event) {
+function handleAddFilm(event) {
     event.preventDefault();
 
-    const titleInput = document.getElementById("bookFormTitle").value;
-    const authorInput = document.getElementById("bookFormAuthor").value;
-    const yearInput = parseInt(document.getElementById("bookFormYear").value);
-    const isCompleted = document.getElementById("bookFormIsComplete").checked;
+    const titleInput = document.getElementById("filmFormTitle").value;
+    const producerInput = document.getElementById("filmFormProducer").value;
+    const yearInput = parseInt(document.getElementById("filmFormYear").value);
+    const isCompleted = document.getElementById("filmFormIsComplete").checked;
 
-    const newBook = {
+    const newFilm = {
         id: Date.now(),
         title: titleInput,
-        author: authorInput,
+        producer: producerInput,
         year: yearInput,
         isComplete: isCompleted,
     };
 
-    bookCollection.push(newBook);
-    saveBooksToLocalStorage();
-    displayBooks();
+    filmCollection.push(newFilm);
+    saveFilmsToLocalStorage();
+    displayFilms();
 }
 
 // Memuat film dari local storage
-function loadBooksFromLocalStorage() {
+function loadFilmsFromLocalStorage() {
     const storedData = localStorage.getItem(STORAGE_KEY);
     if (storedData) {
-        bookCollection = JSON.parse(storedData);
-        displayBooks();
+        filmCollection = JSON.parse(storedData);
+        displayFilms();
     }
 }
 
 // Menampilkan film di rak 
-function displayBooks(filteredBooks = bookCollection) {
-    const incompleteSection = document.getElementById("incompleteBookList");
-    const completeSection = document.getElementById("completeBookList");
+function displayFilms(filteredFilms = filmCollection) {
+    const incompleteSection = document.getElementById("incompleteFilmList");
+    const completeSection = document.getElementById("completeFilmList");
 
     incompleteSection.innerHTML = "";
     completeSection.innerHTML = "";
 
-    filteredBooks.forEach((book) => {
-        const bookCard = createBookCard(book);
-        if (book.isComplete) {
-            completeSection.appendChild(bookCard);
+    filteredFilms.forEach((film) => {
+        const filmCard = createFilmCard(film);
+        if (film.isComplete) {
+            completeSection.appendChild(filmCard);
         } else {
-            incompleteSection.appendChild(bookCard);
+            incompleteSection.appendChild(filmCard);
         }
     });
 }
 
 // Mengubah status film
-function toggleBookCompletion(bookId) {
-    const targetBook = bookCollection.find((book) => book.id === bookId);
-    if (targetBook) {
-        targetBook.isComplete = !targetBook.isComplete;
-        saveBooksToLocalStorage();
-        displayBooks();
+function toggleFilmCompletion(filmId) {
+    const targetFilm = filmCollection.find((film) => film.id === filmId);
+    if (targetFilm) {
+        targetFilm.isComplete = !targetFilm.isComplete;
+        saveFilmsToLocalStorage();
+        displayFilms();
     }
 }
 
 // Menghapus film
-function removeBook(bookId) {
-    bookCollection = bookCollection.filter((book) => book.id !== bookId);
-    saveBooksToLocalStorage();
-    displayBooks();
+function removeFilm(filmId) {
+    filmCollection = filmCollection.filter((film) => film.id !== filmId);
+    saveFilmsToLocalStorage();
+    displayFilms();
 }
 
 // Mencari film
-function handleSearchBook(event) {
+function handleSearchFilm(event) {
     event.preventDefault();
-    const searchQuery = document.getElementById("searchBookTitle").value.toLowerCase();
-    const searchResults = bookCollection.filter((book) =>
-        book.title.toLowerCase().includes(searchQuery)
+    const searchQuery = document.getElementById("searchFilmTitle").value.toLowerCase();
+    const searchResults = filmCollection.filter((film) =>
+        film.title.toLowerCase().includes(searchQuery)
     );
-    displayBooks(searchResults);
+    displayFilms(searchResults);
 }
 
 // Membuat elemen film
-function createBookCard({ id, title, author, year, isComplete }) {
-    const bookCard = document.createElement("div");
-    bookCard.classList.add("book-item");
-    bookCard.setAttribute("data-bookid", id);
-    bookCard.setAttribute("data-testid", "bookItem");
+function createFilmCard({ id, title, producer, year, isComplete }) {
+    const filmCard = document.createElement("div");
+    filmCard.classList.add("film-item");
+    filmCard.setAttribute("data-filmid", id);
+    filmCard.setAttribute("data-testid", "filmItem");
 
     const titleElement = document.createElement("h3");
     titleElement.textContent = title;
-    titleElement.setAttribute("data-testid", "bookItemTitle");
+    titleElement.setAttribute("data-testid", "filmItemTitle");
 
-    const authorElement = document.createElement("p");
-    authorElement.textContent = `Producer: ${author}`;
-    authorElement.setAttribute("data-testid", "bookItemAuthor");
+    const producerElement = document.createElement("p");
+    producerElement.textContent = `Producer: ${producer}`;
+    producerElement.setAttribute("data-testid", "filmItemProducer");
 
     const yearElement = document.createElement("p");
     yearElement.textContent = `Tahun: ${year}`;
-    yearElement.setAttribute("data-testid", "bookItemYear");
+    yearElement.setAttribute("data-testid", "filmItemYear");
 
     const buttonContainer = document.createElement("div");
 
     const toggleButton = document.createElement("button");
     toggleButton.classList.add('toggleButton')
     toggleButton.textContent = isComplete ? "Belum selesai ditonton" : "Selesai ditonton";
-    toggleButton.setAttribute("data-testid", "bookItemIsCompleteButton");
-    toggleButton.addEventListener("click", () => toggleBookCompletion(id));
+    toggleButton.setAttribute("data-testid", "filmItemIsCompleteButton");
+    toggleButton.addEventListener("click", () => toggleFilmCompletion(id));
 
     const deleteButton = document.createElement("button");
     deleteButton.classList.add('deleteButton')
     deleteButton.textContent = "Hapus Film";
-    deleteButton.setAttribute("data-testid", "bookItemDeleteButton");
-    deleteButton.addEventListener("click", () => removeBook(id));
+    deleteButton.setAttribute("data-testid", "filmItemDeleteButton");
+    deleteButton.addEventListener("click", () => removeFilm(id));
 
     buttonContainer.appendChild(toggleButton);
     buttonContainer.appendChild(deleteButton);
 
-    bookCard.appendChild(titleElement);
-    bookCard.appendChild(authorElement);
-    bookCard.appendChild(yearElement);
-    bookCard.appendChild(buttonContainer);
+    filmCard.appendChild(titleElement);
+    filmCard.appendChild(producerElement);
+    filmCard.appendChild(yearElement);
+    filmCard.appendChild(buttonContainer);
 
-    return bookCard;
+    return filmCard;
 }
